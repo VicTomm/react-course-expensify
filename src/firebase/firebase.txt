@@ -1,0 +1,172 @@
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+database.ref('expenses').on('child_changed', (snapshot, prevChildKey) => {
+    console.log(snapshot.key, snapshot.val(), prevChildKey);
+});
+
+database.ref('expenses').on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         })
+//     });
+//     console.log(expenses);
+// });
+
+// database.ref('expenses')
+//     .once('value')
+//     .then((snapshot) => {
+//         const expenses = [];
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             })
+//         });
+//         console.log(expenses);
+//     });
+
+// database.ref('expenses').push({
+//     description: 'Rent',
+//     note: '',
+//     amount: 109500,
+//     createdAt: moment(0).subtract(4, 'days').valueOf()
+// }).then(() => {
+//     console.log('Data was created');
+// }).catch((e) => {
+//     console.log('creation failed.', e);
+// });
+
+// database.ref('expenses').push({
+//     description: 'Credit Cards',
+//     note: '',
+//     amount: 4500,
+//     createdAt: moment(0).add(4, 'days').valueOf()
+// }).then(() => {
+//     console.log('Data was created');
+// }).catch((e) => {
+//     console.log('creation failed.', e);
+// });
+
+// database.ref('expenses').push({
+//     description: 'Gum',
+//     note: '',
+//     amount: 195,
+//     createdAt: 0
+// }).then(() => {
+//     console.log('Data was created');
+// }).catch((e) => {
+//     console.log('creation failed.', e);
+// });
+
+// database.ref('notes').push({
+//     title: 'First Note!',
+//     body: 'this is my note'
+// });
+
+// const firebaseNotes = {
+//     notes: {
+//         "12": {
+//             title: 'First Note!',
+//             body: 'this is my note'
+//         },
+//         "13": {
+//             title: 'Another Note',
+//             body: 'this is my 13 note'
+//         }
+//     }
+// }
+
+// const notes = [{
+//     id: '12',
+//     title: 'First Note',
+//     body: 'this is my note'
+// }, {
+//     id: '13',
+//     title: 'Another Note',
+//     body: 'this is my 13 note'
+// }];
+
+// database.ref('notes').set(notes);
+
+// const onValueChange = database.ref().on('value', (snapshot) => {
+//     console.log(snapshot.val());
+// }, (e) => {
+//     console.log('Error with data subscription ', e.message);
+// });
+
+// setTimeout(() => {
+//     database.ref('age').set(27);
+// }, 3500);
+
+// setTimeout(() => {
+//     database.ref().off(onValueChange);
+// }, 7000);
+
+// setTimeout(() => {
+//     database.ref('age').set(28);
+// }, 3500);
+
+// database.ref()
+//     .once('value')
+//     .then((snapshot) => {
+//         const val = snapshot.val();
+//         console.log(val);
+//     })
+//     .catch((error) => {
+//         console.log('Error fetching data', e);
+//     });
+
+// database.ref().set({
+//     name: 'Victor Tommasi',
+//     age: 27,
+//     stressLevel: 6,
+//     job: {
+//         title: 'Software developer',
+//         company: 'Google'
+//     },
+//     location: {
+//         city: 'Mexico',
+//         country: 'United States'
+//     }
+// }).then(() => {
+//     console.log('Data is saved');
+// }).catch((e) => {
+//     console.log('This failed.', e);
+// });
+
+// database.ref('age').set(28);
+// database.ref('location/country').set('Mexico');
+
+// database.ref('attributes').set({
+//     height: "1.88cm",
+//     weight: "95kg"
+// }).then(() => {
+//     console.log('Success! :)');
+// }).catch((e) => {
+//     console.log('Something went Wrong! :(');
+// });
+
+// database.ref('isSingle').remove().then(() => {
+//     console.log('Remove Succeeded');
+// }).catch((e) => {
+//     console.log("Remove failed: " + e.message);
+// });
+
+// database.ref().update({
+//     stressLevel: 9,
+//     'job/company': 'Amazon',
+//     'location/city': 'Seattle'
+// }).then(() => {
+//     console.log('Data was updated');
+// }).catch((e) => {
+//     console.log('update failed.', e);
+// });
